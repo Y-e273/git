@@ -10,10 +10,15 @@
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd   
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
             http://www.springframework.org/schema/context 
-            http://www.springframework.org/schema/context/spring-context.xsd">  
-            
-    <context:component-scan base-package="com.wxkj.kd.service"/> 
+            http://www.springframework.org/schema/context/spring-context.xsd"> 
+             
+    <context:annotation-config/>
+    <context:component-scan base-package="com.wxkj.kd.service"/>
     <context:component-scan base-package="com.wxkj.kd.dao"/>  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+         <property name="basePackage" value="com.wxkj.kd.dao"></property>
+         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
     
     <!-- 读取数据库配置文件 -->
     <context:property-placeholder location="classpath:database.properties"/>
@@ -45,14 +50,30 @@
    	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
    		<property name="dataSource" ref="dataSource"/>
    	</bean> 
-   	
+   	<!-- 配置事务拦截器，什么方法自动拦截 -->
+    <tx:advice
+        id="transactionAdvice"
+        transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method
+                name="add*"
+                propagation="REQUIRED" />
+            <tx:method
+                name="delete*"
+                propagation="REQUIRED" />
+            <tx:method
+                name="update*"
+                propagation="REQUIRED" />
+            <tx:method
+                name="find*"
+                propagation="SUPPORTS" />
+        </tx:attributes>
+    </tx:advice>
+ 
    	<!-- 配置mybitas SqlSessionFactoryBean-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<property name="dataSource" ref="dataSource"/>
     	<property name="configLocation" value="classpath:spring-mybatis.xml"/>
     </bean>
     
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
-         <property name="basePackage" value="com.wxkj.kd.dao" />  
-    </bean>
 </beans>

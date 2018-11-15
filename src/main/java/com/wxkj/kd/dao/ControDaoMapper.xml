@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxkj.kd.dao.ControDaoMapper">
+	<!-- <resultMap type="com.wxkj.kd.entity.Dictionary" id="dictionaryResultMap">
+		<id column="id" property="id"/>
+		<result column="type" property="type" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="value" property="value" javaType="java.lang.String" jdbcType="VARCHAR"/>
+		<result column="did" property="did" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+		<result column="supertype" property="supertype" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+	</resultMap> -->
+	
+	<resultMap type="com.wxkj.kd.entity.Contro" id="controResultMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="password" property="password"/>
+		<result column="contro" property="contro"/>
+		<result column="controname" property="controname"/>
+		<!-- <association property="dictionary" column="contro" select="queryForDic">
+		</association> -->
+	</resultMap>
+	
+	<select id="queryForContro" parameterType="String" resultMap="controResultMap">
+		select * from contro where name = #{name}
+	</select>
+	
+	<!-- <select id="queryForDic" parameterType="int" resultMap="dictionaryResultMap">
+		select * from dictionary where id = #{id}
+	</select> -->
+</mapper>

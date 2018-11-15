@@ -8,7 +8,7 @@
          version="2.3">
   <display-name>profile</display-name>
   <welcome-file-list>
-  	<welcome-file>index.jsp</welcome-file>
+  	<welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
    <!-- 加载spring配置文件 -->
   <context-param>
@@ -30,11 +30,6 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  <!-- Spring的上下文 -->
-  <context-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:applicationContext.xml</param-value>
-  </context-param>
   <!-- spring监听 -->
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
