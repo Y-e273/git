@@ -2,15 +2,21 @@ package com.wxkj.kd.entity;
 
 public class Clazz {
 
+	private int id;
 	private String clazzid;
-	private int num;
 	public Clazz() {
 		super();
 	}
-	public Clazz(String clazzid, int num) {
+	public Clazz(int id, String clazzid) {
 		super();
+		this.id = id;
 		this.clazzid = clazzid;
-		this.num = num;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getClazzid() {
 		return clazzid;
@@ -18,14 +24,8 @@ public class Clazz {
 	public void setClazzid(String clazzid) {
 		this.clazzid = clazzid;
 	}
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
 	@Override
 	public String toString() {
-		return "Clazz [clazzid=" + clazzid + ", num=" + num + "]";
+		return "Clazz [id=" + id + ", clazzid=" + clazzid + "]";
 	}
 }

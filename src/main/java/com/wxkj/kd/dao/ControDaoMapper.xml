@@ -16,12 +16,47 @@
 		<result column="password" property="password"/>
 		<result column="contro" property="contro"/>
 		<result column="controname" property="controname"/>
+		<result column="status" property="status"/>
 		<!-- <association property="dictionary" column="contro" select="queryForDic">
 		</association> -->
 	</resultMap>
 	
+	<resultMap type="com.wxkj.kd.entity.Clazz" id="clazzResultMap">
+		<id column="id" property="id"/>
+		<result column="clazzid" property="clazzid"/>
+	</resultMap>
+	
+	<resultMap type="com.wxkj.kd.entity.Student" id="stuResultMap">
+		<id column="id" property="id"/>
+		<result column="username" property="username"/>
+		<result column="stuname" property="stuname"/>
+		<result column="password" property="password"/>
+		<result column="sex" property="sex"/>
+		<result column="nation" property="nation"/>
+		<result column="location" property="location"/>
+		<result column="stuid" property="stuid"/>
+		<result column="grade" property="grade"/>
+		<result column="drom" property="drom"/>
+		<result column="dromid" property="dromid"/>
+		<result column="religion" property="religion"/>
+		<result column="politics" property="politics"/>
+		<result column="health" property="health"/>
+		<result column="phone" property="phone"/>
+		<result column="team" property="team"/>
+		<result column="position" property="position"/>
+		<result column="homestatus" property="homestatus"/>
+		<association property="clazz" column="clazz" select="queryForClazz">
+		</association>
+	</resultMap>
+	
 	<select id="queryForContro" parameterType="String" resultMap="controResultMap">
 		select * from contro where name = #{name}
+	</select>
+	<select id="queryForClazz" parameterType="int" resultMap="clazzResultMap">
+		select * from class where id = #{clazz}
+	</select>
+	<select id="queryForStudentList" resultMap="stuResultMap">
+		select * from student
 	</select>
 	
 	<!-- <select id="queryForDic" parameterType="int" resultMap="dictionaryResultMap">

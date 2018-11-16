@@ -7,16 +7,18 @@ public class Contro {
 	private String password;
 	private String contro;
 	private String controname;
+	private int status;
 	public Contro() {
 		super();
 	}
-	public Contro(int id, String name, String password, String contro, String controname) {
+	public Contro(int id, String name, String password, String contro, String controname, int status) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.contro = contro;
 		this.controname = controname;
+		this.status = status;
 	}
 	public int getId() {
 		return id;
@@ -48,9 +50,15 @@ public class Contro {
 	public void setControname(String controname) {
 		this.controname = controname;
 	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "Contro [id=" + id + ", name=" + name + ", password=" + password + ", contro=" + contro + ", controname="
-				+ controname + "]";
+				+ controname + ", status=" + status + "]";
 	}
 }

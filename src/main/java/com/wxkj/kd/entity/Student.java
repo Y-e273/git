@@ -10,7 +10,7 @@ public class Student {
 	private String nation;
 	private String location;
 	private Clazz clazz;
-	private int stuid;
+	private String stuid;
 	private String grade;
 	private String drom;
 	private int dromid;
@@ -25,7 +25,7 @@ public class Student {
 		super();
 	}
 	public Student(int id, String username, String stuname, String password, String sex, String nation, String location,
-			Clazz clazz, int stuid, String grade, String drom, int dromid, String religion, String politics,
+			Clazz clazz, String stuid, String grade, String drom, int dromid, String religion, String politics,
 			String health, String phone, String team, String position, String homestatus) {
 		super();
 		this.id = id;
@@ -96,10 +96,10 @@ public class Student {
 	public void setClazz(Clazz clazz) {
 		this.clazz = clazz;
 	}
-	public int getStuid() {
+	public String getStuid() {
 		return stuid;
 	}
-	public void setStuid(int stuid) {
+	public void setStuid(String stuid) {
 		this.stuid = stuid;
 	}
 	public String getGrade() {
